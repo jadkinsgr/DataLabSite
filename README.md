@@ -1,10 +1,12 @@
 # Midwest Dataworks - Website (draft)
 
-Static site for [midwestdataworks.com](https://www.midwestdataworks.com/), built as a single `index.html` (no build step), matching the structure/pattern of [ProjectPortfolio](https://github.com/jadkinsgr/ProjectPortfolio).
+Static site for [midwestdataworks.com](https://www.midwestdataworks.com/), built as a single `index.html` (no build step).
+
+**Live preview:** https://jadkinsgr.github.io/MidwestDataworksSite/
 
 ## Status: draft
 
-This is being iterated on via GitHub Pages at its default `github.io` URL, **not** yet pointed at the live `midwestdataworks.com` domain (which is currently still served by Wix). Once the design/content is approved, the plan is to:
+This is being iterated on via GitHub Pages at the default `github.io` URL above, **not** yet pointed at the live `midwestdataworks.com` domain (which is currently still served by Wix). Once the design/content is approved, the plan is to:
 
 1. Enable GitHub Pages on this repo (`main` branch, root).
 2. Review/iterate at the `github.io` URL.
