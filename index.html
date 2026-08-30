@@ -6,7 +6,7 @@
 <title>Data Lab - Healthcare Data Modernization</title>
 <meta name="description" content="Data Lab - Healthcare Data Modernization on Azure + Databricks. Better data. Healthier patients. Stronger care.">
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23070c11'/%3E%3Ctext x='50' y='66' font-size='40' font-family='Space Grotesk, sans-serif' font-weight='700' text-anchor='middle' fill='%231ed760'%3EDL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070c11'/%3E%3Cg stroke='%231ed760' stroke-width='7' stroke-linecap='round' fill='none'%3E%3Cline x1='68' y1='46.1' x2='81.5' y2='22.8'/%3E%3Cline x1='49.9' y1='47.6' x2='39' y2='34.2'/%3E%3Cline x1='75.9' y1='61.3' x2='100' y2='63.3'/%3E%3Cline x1='47.3' y1='69.7' x2='32.4' y2='81.1'/%3E%3Cline x1='61.4' y1='75.9' x2='63.3' y2='98'/%3E%3C/g%3E%3Ccircle cx='60' cy='60' r='16' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3Ccircle cx='86' cy='15' r='9' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3Ccircle cx='34' cy='28' r='8' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3Ccircle cx='108' cy='64' r='8' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3Ccircle cx='26' cy='86' r='8' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3Ccircle cx='64' cy='106' r='8' stroke='%231ed760' stroke-width='7' fill='none'/%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.thedatalab.com/">
@@ -39,7 +39,10 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    [data-reveal], .mini-bar, .standard-node, .standard-stem, .standards-drop, .standards-hub {
+      opacity: 1 !important; transform: none !important;
+    }
+    .standards-bar { width: 100% !important; }
   }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -94,9 +97,8 @@
   nav { transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
 
   nav .nav-link { position: relative; }
-  nav .nav-link::after { content: ''; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--primary-light), var(--lime)); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
-  nav .nav-link.is-active::after { transform: scaleX(1); }
   nav .nav-link.is-active { color: #fff; }
+  #nav-indicator { position: absolute; bottom: 4px; left: 0; height: 2px; width: 0; border-radius: 2px; background: linear-gradient(90deg, var(--primary-light), var(--lime)); opacity: 0; pointer-events: none; }
 
   @media (prefers-reduced-motion: reduce) {
     #spotlight { display: none; }
@@ -109,7 +111,29 @@
     box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--primary);
   }
 
-  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links { position: relative; display: flex; align-items: center; gap: 4px; }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .outcome-card { display: flex; flex-direction: column; gap: 16px; }
+  .trend-badge { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 5px 11px; border-radius: 999px; background: rgba(var(--primary-rgb),0.1); border: 1px solid rgba(var(--primary-rgb),0.3); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--primary-light); }
+  .trend-badge svg { width: 12px; height: 12px; stroke: var(--primary-light); }
+  .mini-chart { display: flex; align-items: flex-end; gap: 6px; height: 56px; padding-top: 4px; }
+  .mini-bar { flex: 1 1 0; min-width: 6px; max-width: 20px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--lime), var(--primary)); transform: scaleY(0); transform-origin: bottom; }
+  .mini-chart-axis { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.04em; color: #5b6a70; margin-top: -6px; }
+
+  .standards-wrap { display: flex; flex-direction: column; align-items: center; }
+  .standards-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 10px; width: 100%; margin-bottom: 6px; }
+  .standard-node { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 118px; opacity: 0; transform: translateY(-10px) scale(0.9); }
+  .standard-node-icon { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); }
+  .standard-node-icon svg { width: 21px; height: 21px; stroke: var(--primary-pale); }
+  .standard-node-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12.5px; color: #dbe4e6; text-align: center; line-height: 1.3; }
+  .standard-stem { width: 2px; height: 22px; background: linear-gradient(180deg, rgba(var(--primary-rgb),0.5), rgba(var(--primary-rgb),0.05)); transform: scaleY(0); transform-origin: top; }
+  .standards-bar { height: 2px; width: 0; max-width: 640px; border-radius: 2px; background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.6), var(--lime), rgba(var(--primary-rgb),0.6), transparent); }
+  .standards-drop { width: 2px; height: 30px; background: linear-gradient(180deg, rgba(var(--primary-rgb),0.5), var(--primary)); transform: scaleY(0); transform-origin: top; }
+  .standards-hub { opacity: 0; transform: scale(0.92); text-align: center; border: 1px solid rgba(var(--primary-rgb),0.35); border-radius: 18px; background: linear-gradient(180deg, rgba(var(--primary-rgb),0.1), rgba(var(--lime-rgb),0.03)); padding: 22px 30px; max-width: 380px; }
+  .standards-hub-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 12px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); }
+  .standards-hub-icon svg { width: 22px; height: 22px; stroke: #06110f; }
 
   #nav-toggle { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; padding: 0; }
   #nav-toggle span, #nav-toggle span::before, #nav-toggle span::after { display: block; width: 18px; height: 2px; background: #e7ecef; border-radius: 2px; position: relative; transition: transform .25s, opacity .25s; }
@@ -123,8 +147,12 @@
   @media (max-width: 900px) {
     header.hero { grid-template-columns: 1fr !important; }
     .grid-2 { grid-template-columns: 1fr !important; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
     .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
     #nav-toggle { display: inline-flex; }
+    #nav-indicator { display: none; }
+    .standards-bar, .standards-drop, .standard-stem { display: none; }
+    .standards-hub { margin-top: 10px; }
     nav .nav-links {
       position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch;
       gap: 2px; padding: 10px clamp(20px, 5vw, 64px) 18px; background: rgba(7,12,17,0.98);
@@ -134,6 +162,10 @@
     nav .nav-links.is-open { max-height: 320px; opacity: 1; }
     nav .nav-links a.nav-link { padding: 12px 8px; font-size: 15px; }
     nav .nav-links a.nav-cta { margin: 8px 0 0; text-align: center; justify-content: center; }
+  }
+
+  @media (max-width: 560px) {
+    .grid-3 { grid-template-columns: 1fr !important; }
   }
 </style>
 </head>
@@ -145,15 +177,33 @@
 
   <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 5vw, 64px); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(7,12,17,0.6); border-bottom: 1px solid rgba(255,255,255,0.06);">
     <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;">
-      <span style="width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary-light), var(--primary)); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; color: #06110f;">DL</span>
+      <svg viewBox="0 0 120 120" width="32" height="32" fill="none" aria-hidden="true">
+        <defs><linearGradient id="navMark" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6EE7A0"/><stop offset="1" stop-color="#C4F135"/></linearGradient></defs>
+        <g stroke="url(#navMark)" stroke-width="6" stroke-linecap="round">
+          <line x1="68" y1="46.1" x2="81.5" y2="22.8"/>
+          <line x1="49.9" y1="47.6" x2="39" y2="34.2"/>
+          <line x1="75.9" y1="61.3" x2="100" y2="63.3"/>
+          <line x1="47.3" y1="69.7" x2="32.4" y2="81.1"/>
+          <line x1="61.4" y1="75.9" x2="63.3" y2="98"/>
+        </g>
+        <circle cx="60" cy="60" r="16" stroke="url(#navMark)" stroke-width="6"/>
+        <circle cx="86" cy="15" r="9" stroke="url(#navMark)" stroke-width="6"/>
+        <circle cx="34" cy="28" r="8" stroke="url(#navMark)" stroke-width="6"/>
+        <circle cx="108" cy="64" r="8" stroke="url(#navMark)" stroke-width="6"/>
+        <circle cx="26" cy="86" r="8" stroke="url(#navMark)" stroke-width="6"/>
+        <circle cx="64" cy="106" r="8" stroke="url(#navMark)" stroke-width="6"/>
+      </svg>
       <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 16px;">Data Lab</span>
     </a>
     <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Toggle navigation menu">
       <span></span>
     </button>
     <div id="primary-nav-links" class="nav-links">
+      <span id="nav-indicator" aria-hidden="true"></span>
       <a href="#services" class="nav-link">Services</a>
       <a href="#approach" class="nav-link">Approach</a>
+      <a href="#standards" class="nav-link">Standards</a>
+      <a href="#outcomes" class="nav-link">Outcomes</a>
       <a href="#clients" class="nav-link">Clients</a>
       <a href="#stack" class="nav-link">Stack</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
@@ -192,7 +242,22 @@
         <div style="position: absolute; inset: -14px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, rgba(var(--primary-rgb),0.7), rgba(var(--lime-rgb),0.5), transparent 65%); animation: spinRing 9s linear infinite; filter: blur(2px);"></div>
         <div style="position: absolute; inset: 0; border-radius: 50%; animation: pulseRing 3.6s ease-out infinite;"></div>
         <div style="position: absolute; inset: 4px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(255,255,255,0.14); background: #0b141a; display: grid; place-items: center;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(44px, 6vw, 64px); color: #e7ecef; letter-spacing: -0.02em;">DL</span>
+          <svg viewBox="0 0 120 120" style="width: 60%; height: 60%;" fill="none" aria-hidden="true">
+            <defs><linearGradient id="orbMark" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6EE7A0"/><stop offset="1" stop-color="#C4F135"/></linearGradient></defs>
+            <g stroke="url(#orbMark)" stroke-width="6" stroke-linecap="round">
+              <line x1="68" y1="46.1" x2="81.5" y2="22.8"/>
+              <line x1="49.9" y1="47.6" x2="39" y2="34.2"/>
+              <line x1="75.9" y1="61.3" x2="100" y2="63.3"/>
+              <line x1="47.3" y1="69.7" x2="32.4" y2="81.1"/>
+              <line x1="61.4" y1="75.9" x2="63.3" y2="98"/>
+            </g>
+            <circle cx="60" cy="60" r="16" stroke="url(#orbMark)" stroke-width="6"/>
+            <circle cx="86" cy="15" r="9" stroke="url(#orbMark)" stroke-width="6"/>
+            <circle cx="34" cy="28" r="8" stroke="url(#orbMark)" stroke-width="6"/>
+            <circle cx="108" cy="64" r="8" stroke="url(#orbMark)" stroke-width="6"/>
+            <circle cx="26" cy="86" r="8" stroke="url(#orbMark)" stroke-width="6"/>
+            <circle cx="64" cy="106" r="8" stroke="url(#orbMark)" stroke-width="6"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -266,6 +331,167 @@
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--primary-light); margin-bottom: 10px;">INGESTION</div>
         <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #eef2f3; margin: 0 0 12px;">Flexible Data Ingestion</h3>
         <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0;">Pipelines supporting real-time and batch data movement from APIs, flat files, FHIR endpoints, and databases.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="standards" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 30px clamp(20px, 5vw, 64px) 70px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 10px;">// BUILT FOR THE STANDARDS THAT DEFINE QUALITY</div>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 40px; max-width: 700px;">One validated layer, mapped to every measure that matters.</h2>
+    <div class="standards-wrap" id="standards-diagram">
+      <div class="standards-row" id="standards-row">
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 5 3 8 7 9 4-1 7-4 7-9V6l-7-3z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">CMS Measures</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">Leapfrog</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 4V5"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">HCAHPS</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">AHRQ PSI</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">Joint Commission</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.8 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 20l1.4-6.3-4.8-4.3 6.4-.6z"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">NQF Endorsed</div>
+        </div>
+        <div class="standard-node">
+          <div class="standard-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m6.5 10V4M17 20v-7"/><path d="M3 20h18"/></svg></div>
+          <div class="standard-stem" aria-hidden="true"></div>
+          <div class="standard-node-label">HEDIS</div>
+        </div>
+      </div>
+      <div class="standards-bar" id="standards-bar" aria-hidden="true"></div>
+      <div class="standards-drop" id="standards-drop" aria-hidden="true"></div>
+      <div class="standards-hub" id="standards-hub">
+        <div class="standards-hub-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5-3.6-2.5-8-2.5-8 1.1-8 2.5z"/><path d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5"/><path d="M12 13.5V19"/></svg></div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; color: #eef2f3; margin-bottom: 6px;">Unified Quality &amp; Outcomes Layer</div>
+        <p style="font-size: 13.5px; line-height: 1.55; color: #a3b0b6; margin: 0;">Every framework mapped once on the Gold layer, so reporting for one measure never means re-building the rest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="outcomes" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) 70px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 10px;">// THE DIRECTION OF TRAVEL</div>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 8px;">The trends these platforms are built to move.</h2>
+    <p style="font-size: 14.5px; color: #79878d; margin: 0 0 40px; max-width: 620px;">Illustrative trend shapes, not audited figures - the direction every engagement is aimed at.</p>
+    <div class="grid-3">
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Faster</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Time to Delivery</h3>
+        <div class="mini-chart" data-trend="down">
+          <div class="mini-bar" style="height: 100%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 30%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Shorter implementation timelines as playbooks and automation mature engagement over engagement.</p>
+      </div>
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l6-7 4 4 6-8"/><path d="M15 5h5v5"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Rising</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Value Delivered</h3>
+        <div class="mini-chart" data-trend="up">
+          <div class="mini-bar" style="height: 30%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 100%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Compounding return as more measures, dashboards, and teams run on the same validated layer.</p>
+      </div>
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Declining</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">30-Day Readmissions</h3>
+        <div class="mini-chart" data-trend="down">
+          <div class="mini-bar" style="height: 100%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 30%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Earlier risk signals surfaced from unified ADT, claims, and care-management data.</p>
+      </div>
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 5 3 8 7 9 4-1 7-4 7-9V6l-7-3z"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Declining</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Risk-Adjusted Mortality</h3>
+        <div class="mini-chart" data-trend="down">
+          <div class="mini-bar" style="height: 100%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 30%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">PSI and mortality-index tracking built directly into the same Gold-layer measures.</p>
+      </div>
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4v-9h3zm0 0 3.5-7a2 2 0 0 1 3.6 1.2L13 9h5a2 2 0 0 1 2 2.3l-1.2 7A2 2 0 0 1 16.8 20H7"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Rising</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Willingness to Recommend</h3>
+        <div class="mini-chart" data-trend="up">
+          <div class="mini-bar" style="height: 30%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 100%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">HCAHPS "likelihood to recommend" tracked alongside every clinical measure, not siloed apart from it.</p>
+      </div>
+      <div class="service-card outcome-card">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.8 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 20l1.4-6.3-4.8-4.3 6.4-.6z"/></svg></div>
+          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Climbing</div>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">CMS Star Rating</h3>
+        <div class="mini-chart" data-trend="up">
+          <div class="mini-bar" style="height: 30%;"></div>
+          <div class="mini-bar" style="height: 42%;"></div>
+          <div class="mini-bar" style="height: 56%;"></div>
+          <div class="mini-bar" style="height: 70%;"></div>
+          <div class="mini-bar" style="height: 84%;"></div>
+          <div class="mini-bar" style="height: 100%;"></div>
+        </div>
+        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
+        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Year-over-year movement tracked against the exact measure weights CMS publishes.</p>
       </div>
     </div>
   </section>
@@ -371,22 +597,44 @@
       gsap.ticker.lagSmoothing(0);
     }
 
-    // --- Nav: scrolled state + scrollspy -------------------------------
-    ScrollTrigger.create({
-      start: 'top -80',
-      end: 99999,
-      onUpdate: (self) => siteNav.classList.toggle('is-scrolled', self.scroll() > 80)
-    });
+    // --- Nav: scrolled state + scrollspy (single deterministic pass, no overlap flicker) ---
     const navAnchors = Array.from(document.querySelectorAll('.nav-link'));
-    document.querySelectorAll('section[id]').forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section, start: 'top 40%', end: 'bottom 40%',
-        onToggle: (self) => {
-          if (!self.isActive) return;
-          navAnchors.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + section.id));
-        }
-      });
-    });
+    const navIndicator = document.getElementById('nav-indicator');
+    const navLinksEl = document.getElementById('primary-nav-links');
+    const spySections = Array.from(document.querySelectorAll('section[id]'));
+    let activeHref = null;
+
+    function positionIndicator() {
+      if (window.innerWidth <= 900) { navIndicator.style.opacity = 0; return; }
+      const activeLink = navAnchors.find(a => a.classList.contains('is-active'));
+      if (!activeLink) { navIndicator.style.opacity = 0; return; }
+      const linkRect = activeLink.getBoundingClientRect();
+      const parentRect = navLinksEl.getBoundingClientRect();
+      const left = linkRect.left - parentRect.left + 14;
+      const width = Math.max(linkRect.width - 28, 0);
+      gsap.to(navIndicator, { x: left, width, opacity: 1, duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+    }
+
+    function setActiveSection(href) {
+      if (href === activeHref) return;
+      activeHref = href;
+      navAnchors.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === href));
+      positionIndicator();
+    }
+
+    function updateNavState() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      siteNav.classList.toggle('is-scrolled', scrollY > 80);
+      const line = 140;
+      let current = null;
+      for (const sec of spySections) {
+        if (sec.getBoundingClientRect().top - line <= 0) current = sec; else break;
+      }
+      setActiveSection(current ? '#' + current.id : null);
+    }
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', positionIndicator);
+    updateNavState();
 
     // --- data-reveal / data-reveal-item scroll fades --------------------
     gsap.utils.toArray('[data-reveal]').forEach((el) => {
@@ -399,11 +647,18 @@
     staggerGroups.forEach((sel) => {
       const items = gsap.utils.toArray(sel);
       if (!items.length) return;
-      const parent = items[0].closest('section') || items[0].parentElement;
-      gsap.set(items, { opacity: 0, y: 24 });
-      gsap.to(items, {
-        opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08,
-        scrollTrigger: { trigger: parent, start: 'top 82%', toggleActions: 'play none none reverse' }
+      const groups = new Map();
+      items.forEach((el) => {
+        const parent = el.closest('section') || el.parentElement;
+        if (!groups.has(parent)) groups.set(parent, []);
+        groups.get(parent).push(el);
+      });
+      groups.forEach((groupItems, parent) => {
+        gsap.set(groupItems, { opacity: 0, y: 24 });
+        gsap.to(groupItems, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08,
+          scrollTrigger: { trigger: parent, start: 'top 82%', toggleActions: 'play none none reverse' }
+        });
       });
     });
     const pipelineItems = gsap.utils.toArray('#pipeline-row > div');
@@ -413,6 +668,30 @@
         opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.07,
         scrollTrigger: { trigger: '#pipeline-row', start: 'top 85%', toggleActions: 'play none none reverse' }
       });
+    }
+
+    // --- Mini trend bar charts (Outcomes section) ------------------------
+    const miniCharts = gsap.utils.toArray('.mini-chart');
+    if (miniCharts.length) {
+      const outcomesSection = miniCharts[0].closest('section');
+      gsap.to('.mini-bar', {
+        scaleY: 1, duration: 0.7, ease: 'power2.out', stagger: 0.03,
+        scrollTrigger: { trigger: outcomesSection, start: 'top 75%', toggleActions: 'play none none reverse' }
+      });
+    }
+
+    // --- Standards diagram: nodes -> stems -> bar -> drop -> hub ---------
+    const standardsDiagram = document.getElementById('standards-diagram');
+    if (standardsDiagram) {
+      const standardsTl = gsap.timeline({
+        scrollTrigger: { trigger: standardsDiagram, start: 'top 75%', toggleActions: 'play none none reverse' }
+      });
+      standardsTl
+        .to('.standard-node', { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power2.out', stagger: 0.06 })
+        .to('.standard-stem', { scaleY: 1, duration: 0.3, ease: 'power2.out', stagger: 0.05 }, '-=0.3')
+        .to('#standards-bar', { width: '100%', duration: 0.5, ease: 'power2.out' }, '-=0.1')
+        .to('#standards-drop', { scaleY: 1, duration: 0.3, ease: 'power2.out' }, '-=0.15')
+        .to('#standards-hub', { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)' }, '-=0.1');
     }
 
     // --- Animated stat counters -----------------------------------------
@@ -490,6 +769,24 @@
     els.forEach(el => io.observe(el));
     document.querySelectorAll('.hero-word > span, .stat-num').forEach(el => { el.style.opacity = '1'; });
     document.querySelectorAll('.stat-num').forEach(el => { el.textContent = el.dataset.countTo + (el.dataset.suffix || ''); });
+    document.querySelectorAll('.mini-bar, .standard-node, .standard-stem, .standards-drop, .standards-hub').forEach(el => {
+      el.style.opacity = '1'; el.style.transform = 'none';
+    });
+    const barFallback = document.getElementById('standards-bar');
+    if (barFallback) barFallback.style.width = '100%';
+
+    // Basic nav scroll state + scrollspy without GSAP
+    const siteNavEl = document.querySelector('nav');
+    const navAnchorsFallback = Array.from(document.querySelectorAll('.nav-link'));
+    const spySectionsFallback = Array.from(document.querySelectorAll('section[id]'));
+    window.addEventListener('scroll', () => {
+      siteNavEl.classList.toggle('is-scrolled', window.scrollY > 80);
+      let current = null;
+      for (const sec of spySectionsFallback) {
+        if (sec.getBoundingClientRect().top - 140 <= 0) current = sec; else break;
+      }
+      navAnchorsFallback.forEach(a => a.classList.toggle('is-active', current && a.getAttribute('href') === '#' + current.id));
+    }, { passive: true });
   }
 
   const canvas = document.getElementById('net');
