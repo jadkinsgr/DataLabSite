@@ -39,7 +39,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-    [data-reveal], .mini-bar, .standard-node, .standard-stem, .standards-drop, .standards-hub {
+    [data-reveal], .ops-dashboard, .standard-node, .standard-stem, .standards-drop, .standards-hub {
       opacity: 1 !important; transform: none !important;
     }
     .standards-bar { width: 100% !important; }
@@ -106,12 +106,28 @@
 
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-  .outcome-card { display: flex; flex-direction: column; gap: 16px; }
-  .trend-badge { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 5px 11px; border-radius: 999px; background: rgba(var(--primary-rgb),0.1); border: 1px solid rgba(var(--primary-rgb),0.3); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--primary-light); }
-  .trend-badge svg { width: 12px; height: 12px; stroke: var(--primary-light); }
-  .mini-chart { display: flex; align-items: flex-end; gap: 6px; height: 56px; padding-top: 4px; }
-  .mini-bar { flex: 1 1 0; min-width: 6px; max-width: 46px; border-radius: 4px 4px 0 0; background: var(--primary); transform: scaleY(0); transform-origin: bottom; }
-  .mini-chart-axis { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.04em; color: #5b6a70; margin-top: -6px; }
+  .pillar-row { display: flex; align-items: flex-start; gap: 14px; }
+  .pillar-row .service-icon { margin-bottom: 0; flex: none; }
+
+  .ops-dashboard { border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012)); backdrop-filter: blur(12px); overflow: hidden; opacity: 0; transform: translateY(18px); }
+  .ops-dashboard-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+  .ops-dashboard-dots { display: flex; gap: 6px; }
+  .ops-dashboard-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.14); }
+  .ops-dashboard-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: #79878d; }
+  .ops-live-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--primary-light); }
+  .ops-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #7dd87d; box-shadow: 0 0 8px #7dd87d; animation: ops-pulse 1.8s ease-in-out infinite; }
+  @keyframes ops-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .ops-row { display: flex; align-items: center; gap: 12px; padding: 13px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .ops-row:last-child { border-bottom: none; }
+  .ops-status-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .ops-status-dot.ok { background: #7dd87d; box-shadow: 0 0 6px rgba(125,216,125,0.6); }
+  .ops-status-dot.watch { background: #f2c94c; box-shadow: 0 0 6px rgba(242,201,76,0.6); }
+  .ops-row-label { font-size: 13px; color: #cdd6da; flex: 1 1 auto; }
+  .ops-spark { flex: none; }
+  .ops-row-delta { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.02em; flex: none; min-width: 54px; text-align: right; }
+  .ops-row-delta.good { color: var(--primary-light); }
+  .ops-row-delta.watch { color: #f2c94c; }
+  .ops-dashboard-foot { display: flex; align-items: center; justify-content: space-between; padding: 11px 18px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #5b6a70; background: rgba(255,255,255,0.015); }
 
   .standards-wrap { display: flex; flex-direction: column; align-items: center; }
   .standards-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 10px; width: 100%; margin-bottom: 6px; }
@@ -349,110 +365,83 @@
 
   <section id="outcomes" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) 70px;">
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 10px;">// THE DIRECTION OF TRAVEL</div>
-    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 8px;">The trends these platforms are built to move.</h2>
-    <p style="font-size: 14.5px; color: #79878d; margin: 0 0 40px; max-width: 620px;">Illustrative trend shapes, not audited figures - the direction every engagement is aimed at.</p>
-    <div class="grid-3">
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Faster</div>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 8px;">One console for the metrics that matter.</h2>
+    <p style="font-size: 14.5px; color: #79878d; margin: 0 0 40px; max-width: 660px;">A comprehensive, closed-loop approach to clinical insight - built to surface improvement opportunities before they show up in a quarterly report.</p>
+    <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+      <div>
+        <p style="font-size: 15.5px; line-height: 1.7; color: #a3b0b6; margin: 0 0 26px; max-width: 500px;">We treat clinical insight as a system, not a stack of spreadsheets. Readmissions, mortality, patient experience, and CMS star ratings all read from the same validated Gold layer, so an improvement opportunity surfaced in one report holds up everywhere else it matters.</p>
+        <div style="display: flex; flex-direction: column; gap: 22px;">
+          <div class="pillar-row">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg></div>
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #eef2f3; margin: 0 0 4px;">Unified measures</h3>
+              <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">One Gold-layer definition per metric, feeding every dashboard, regulator, and payer report the same number.</p>
+            </div>
+          </div>
+          <div class="pillar-row">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-7 5 14 2.5-7H21"/></svg></div>
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #eef2f3; margin: 0 0 4px;">Early signal detection</h3>
+              <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Risk and quality shifts surface from unified ADT, claims, and care-management data - before they land in a CMS refresh.</p>
+            </div>
+          </div>
+          <div class="pillar-row">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 6v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3M4 18v-5h5"/></svg></div>
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: #eef2f3; margin: 0 0 4px;">Closed-loop improvement</h3>
+              <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Findings route back to the teams who own the workflow, so an opportunity gets tracked to resolution, not just reported.</p>
+            </div>
+          </div>
         </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Time to Delivery</h3>
-        <div class="mini-chart" data-trend="down">
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
-        </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Shorter implementation timelines as playbooks and automation mature engagement over engagement.</p>
       </div>
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l6-7 4 4 6-8"/><path d="M15 5h5v5"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Rising</div>
+      <div class="ops-dashboard" id="ops-dashboard">
+        <div class="ops-dashboard-head">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="ops-dashboard-dots"><span></span><span></span><span></span></div>
+            <div class="ops-dashboard-title">clinical-insights.ops</div>
+          </div>
+          <div class="ops-live-badge"><span class="ops-live-dot"></span>LIVE</div>
         </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Value Delivered</h3>
-        <div class="mini-chart" data-trend="up">
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
+        <div class="ops-row">
+          <span class="ops-status-dot ok"></span>
+          <span class="ops-row-label">Time to Delivery</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,3 12,6 24,9 36,13 48,15 56,17" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta good">-18%</span>
         </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Compounding return as more measures, dashboards, and teams run on the same validated layer.</p>
-      </div>
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Declining</div>
+        <div class="ops-row">
+          <span class="ops-status-dot ok"></span>
+          <span class="ops-row-label">Value Realized</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,17 12,14 24,11 36,8 48,5 56,2" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta good">+24%</span>
         </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">30-Day Readmissions</h3>
-        <div class="mini-chart" data-trend="down">
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
+        <div class="ops-row">
+          <span class="ops-status-dot ok"></span>
+          <span class="ops-row-label">30-Day Readmissions</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,3 12,6 24,9 36,13 48,15 56,17" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta good">-11%</span>
         </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Earlier risk signals surfaced from unified ADT, claims, and care-management data.</p>
-      </div>
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 5 3 8 7 9 4-1 7-4 7-9V6l-7-3z"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0-5-5m5 5 5-5"/></svg>Declining</div>
+        <div class="ops-row">
+          <span class="ops-status-dot ok"></span>
+          <span class="ops-row-label">Risk-Adjusted Mortality</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,3 12,6 24,9 36,13 48,15 56,17" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta good">-9%</span>
         </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Risk-Adjusted Mortality</h3>
-        <div class="mini-chart" data-trend="down">
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
+        <div class="ops-row">
+          <span class="ops-status-dot ok"></span>
+          <span class="ops-row-label">Willingness to Recommend</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,17 12,14 24,11 36,8 48,5 56,2" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta good">+7 pts</span>
         </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">PSI and mortality-index tracking built directly into the same Gold-layer measures.</p>
-      </div>
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4v-9h3zm0 0 3.5-7a2 2 0 0 1 3.6 1.2L13 9h5a2 2 0 0 1 2 2.3l-1.2 7A2 2 0 0 1 16.8 20H7"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Rising</div>
+        <div class="ops-row">
+          <span class="ops-status-dot watch"></span>
+          <span class="ops-row-label">CMS Star Rating</span>
+          <svg class="ops-spark" width="52" height="20" viewBox="0 0 56 20" fill="none"><polyline points="0,12 12,11 24,9 36,10 48,7 56,6" stroke="#f2c94c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ops-row-delta watch">+0.4</span>
         </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">Willingness to Recommend</h3>
-        <div class="mini-chart" data-trend="up">
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
+        <div class="ops-dashboard-foot">
+          <span>// illustrative, not audited figures</span>
+          <span>synced 4m ago</span>
         </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">HCAHPS "likelihood to recommend" tracked alongside every clinical measure, not siloed apart from it.</p>
-      </div>
-      <div class="service-card outcome-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
-          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.8 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 20l1.4-6.3-4.8-4.3 6.4-.6z"/></svg></div>
-          <div class="trend-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6m0 0-5 5m5-5 5 5"/></svg>Climbing</div>
-        </div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #eef2f3; margin: 0;">CMS Star Rating</h3>
-        <div class="mini-chart" data-trend="up">
-          <div class="mini-bar" style="height: 30%; background: color-mix(in srgb, var(--primary) 30%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 42%; background: color-mix(in srgb, var(--primary) 42%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 56%; background: color-mix(in srgb, var(--primary) 56%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 70%; background: color-mix(in srgb, var(--primary) 70%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 84%; background: color-mix(in srgb, var(--primary) 84%, var(--lime));"></div>
-          <div class="mini-bar" style="height: 100%; background: color-mix(in srgb, var(--primary) 100%, var(--lime));"></div>
-        </div>
-        <div class="mini-chart-axis"><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span></div>
-        <p style="font-size: 13.5px; line-height: 1.6; color: #a3b0b6; margin: 0;">Year-over-year movement tracked against the exact measure weights CMS publishes.</p>
       </div>
     </div>
   </section>
@@ -631,13 +620,12 @@
       });
     }
 
-    // --- Mini trend bar charts (Outcomes section) ------------------------
-    const miniCharts = gsap.utils.toArray('.mini-chart');
-    if (miniCharts.length) {
-      const outcomesSection = miniCharts[0].closest('section');
-      gsap.to('.mini-bar', {
-        scaleY: 1, duration: 0.7, ease: 'power2.out', stagger: 0.03,
-        scrollTrigger: { trigger: outcomesSection, start: 'top 75%', toggleActions: 'play none none reverse' }
+    // --- Ops dashboard mockup (Outcomes section) --------------------------
+    const opsDashboard = document.getElementById('ops-dashboard');
+    if (opsDashboard) {
+      gsap.to(opsDashboard, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+        scrollTrigger: { trigger: opsDashboard, start: 'top 80%', toggleActions: 'play none none reverse' }
       });
     }
 
@@ -706,7 +694,7 @@
     els.forEach(el => io.observe(el));
     document.querySelectorAll('.hero-word > span, .stat-num').forEach(el => { el.style.opacity = '1'; });
     document.querySelectorAll('.stat-num').forEach(el => { el.textContent = el.dataset.countTo + (el.dataset.suffix || ''); });
-    document.querySelectorAll('.mini-bar, .standard-node, .standard-stem, .standards-drop, .standards-hub').forEach(el => {
+    document.querySelectorAll('.ops-dashboard, .standard-node, .standard-stem, .standards-drop, .standards-hub').forEach(el => {
       el.style.opacity = '1'; el.style.transform = 'none';
     });
     const barFallback = document.getElementById('standards-bar');
