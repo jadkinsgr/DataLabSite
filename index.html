@@ -203,10 +203,6 @@
 
   <header id="top" class="hero" style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 168px clamp(20px, 5vw, 64px) 40px; display: grid; align-items: center; min-height: 92vh;">
     <div>
-      <div id="hero-badge" style="display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(var(--primary-rgb),0.3); background: rgba(var(--primary-rgb),0.08); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--primary-light); margin-bottom: 26px;">
-        <span style="width: 7px; height: 7px; border-radius: 50%; background: #7dd87d; box-shadow: 0 0 10px #7dd87d;"></span>
-        HEALTHCARE DATA MODERNIZATION · AZURE + DATABRICKS
-      </div>
       <h1 id="hero-title" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 18px; color: #f4f7f8;">
         <span class="hero-word"><span>Welcome</span></span> <span class="hero-word"><span>to</span></span> <span class="hero-word"><span>the</span></span> <span class="hero-word"><span style="background: linear-gradient(100deg, var(--primary-light), var(--primary) 40%, var(--lime) 75%, var(--primary-light)); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 6s linear infinite;">Data</span></span> <span class="hero-word"><span style="background: linear-gradient(100deg, var(--primary-light), var(--primary) 40%, var(--lime) 75%, var(--primary-light)); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 6s linear infinite;">Lab.</span></span>
       </h1>
@@ -675,13 +671,12 @@
 
     // --- Hero entrance timeline ------------------------------------------
     if (reduceMotion) {
-      gsap.set('.hero-word > span, #hero-badge, #hero-lead, #hero-desc, #hero-ctas, #hero-stats', { opacity: 1, y: 0, clearProps: 'transform' });
+      gsap.set('.hero-word > span, #hero-lead, #hero-desc, #hero-ctas, #hero-stats', { opacity: 1, y: 0, clearProps: 'transform' });
     } else {
       gsap.set('.hero-word > span', { yPercent: 110 });
-      gsap.set(['#hero-badge', '#hero-lead', '#hero-desc', '#hero-ctas', '#hero-stats'], { opacity: 0, y: 18 });
+      gsap.set(['#hero-lead', '#hero-desc', '#hero-ctas', '#hero-stats'], { opacity: 0, y: 18 });
       const tl = gsap.timeline({ delay: 0.15, defaults: { ease: 'expo.out' } });
-      tl.to('#hero-badge', { opacity: 1, y: 0, duration: 0.6 })
-        .to('.hero-word > span', { yPercent: 0, duration: 0.8, stagger: 0.045 }, '-=0.35')
+      tl.to('.hero-word > span', { yPercent: 0, duration: 0.8, stagger: 0.045 })
         .to('#hero-lead', { opacity: 1, y: 0, duration: 0.6 }, '-=0.35')
         .to('#hero-desc', { opacity: 1, y: 0, duration: 0.6 }, '-=0.45')
         .to('#hero-ctas', { opacity: 1, y: 0, duration: 0.6 }, '-=0.45')
