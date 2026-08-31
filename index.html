@@ -90,6 +90,7 @@
   nav.is-scrolled { background: rgba(7,12,17,0.86) !important; border-bottom-color: rgba(255,255,255,0.1) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
   nav { transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
 
+  section[id] { scroll-margin-top: 90px; }
   nav .nav-link { position: relative; }
   nav .nav-link.is-active { color: #fff; }
   #nav-indicator { position: absolute; bottom: 4px; left: 0; height: 2px; width: 0; border-radius: 2px; background: linear-gradient(90deg, var(--primary-light), var(--lime)); opacity: 0; pointer-events: none; }
@@ -501,7 +502,7 @@
     </div>
   </section>
 
-  <section id="contact" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) 120px; text-align: center;">
+  <section id="contact" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) clamp(140px, 34vh, 380px); text-align: center;">
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 14px;">// GET IN TOUCH</div>
     <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 18px;">Let's modernize your data platform.</h2>
     <p style="font-size: 16px; line-height: 1.6; color: #a3b0b6; max-width: 520px; margin: 0 auto 34px;">Grand Rapids, MI - working with healthcare organizations nationwide.</p>
