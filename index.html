@@ -771,10 +771,6 @@
       ctx.fillStyle = 'rgba(30,215,96,0.35)';
       ctx.beginPath(); ctx.arc(points[i].x, points[i].y, 1.6, 0, Math.PI * 2); ctx.fill();
     }
-    if (mouse.active) {
-      ctx.fillStyle = 'rgba(196,241,53,0.9)';
-      ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 2.6, 0, Math.PI * 2); ctx.fill();
-    }
     requestAnimationFrame(tick);
   }
   window.addEventListener('resize', () => { resize(); initPoints(); });
