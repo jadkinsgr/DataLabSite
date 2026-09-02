@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; font-family: 'IBM Plex Sans', system-ui, sans-serif; background: #070c11; color: #e7ecef; }
+  </style>
+</helmet>
+<div style="width:540px; height:960px; background:#070c11; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center;">
+  <div style="position:absolute; top:0; left:0; right:0; height:420px; background:linear-gradient(160deg, #0b1e26 0%, #0f3040 35%, #1a4a3a 62%, #2d6a4f 80%, #C4F135 100%); opacity:0.95;"></div>
+  <div style="position:absolute; top:280px; left:50%; transform:translateX(-50%); width:400px; height:300px; background:radial-gradient(ellipse, rgba(30,215,96,0.2) 0%, transparent 65%); pointer-events:none;"></div>
+  <svg style="position:absolute; top:0; left:0; width:540px; height:460px; opacity:0.28;" viewBox="0 0 540 460" fill="none">
+    <line x1="40" y1="100" x2="140" y2="50" stroke="#6EE7A0" stroke-width="1.2"/>
+    <line x1="140" y1="50" x2="260" y2="130" stroke="#6EE7A0" stroke-width="1.2"/>
+    <line x1="260" y1="130" x2="380" y2="60" stroke="#C4F135" stroke-width="1.2"/>
+    <line x1="380" y1="60" x2="500" y2="140" stroke="#C4F135" stroke-width="1.2"/>
+    <line x1="140" y1="50" x2="160" y2="200" stroke="#6EE7A0" stroke-width="1"/>
+    <line x1="260" y1="130" x2="240" y2="280" stroke="#6EE7A0" stroke-width="1"/>
+    <line x1="380" y1="60" x2="400" y2="220" stroke="#C4F135" stroke-width="1"/>
+    <line x1="40" y1="350" x2="140" y2="400" stroke="#6EE7A0" stroke-width="1"/>
+    <line x1="140" y1="400" x2="280" y2="360" stroke="#6EE7A0" stroke-width="1"/>
+    <line x1="280" y1="360" x2="400" y2="420" stroke="#C4F135" stroke-width="1"/>
+    <line x1="400" y1="420" x2="500" y2="370" stroke="#C4F135" stroke-width="1"/>
+    <circle cx="40" cy="100" r="3.5" fill="#6EE7A0"/><circle cx="140" cy="50" r="4.5" fill="#6EE7A0"/>
+    <circle cx="160" cy="200" r="2.5" fill="#6EE7A0"/><circle cx="240" cy="280" r="2.5" fill="#6EE7A0"/>
+    <circle cx="260" cy="130" r="4" fill="#6EE7A0"/><circle cx="380" cy="60" r="4" fill="#C4F135"/>
+    <circle cx="400" cy="220" r="2.5" fill="#C4F135"/><circle cx="500" cy="140" r="3.5" fill="#C4F135"/>
+    <circle cx="40" cy="350" r="2.5" fill="#6EE7A0"/><circle cx="140" cy="400" r="3" fill="#6EE7A0"/>
+    <circle cx="280" cy="360" r="3" fill="#C4F135"/><circle cx="400" cy="420" r="3" fill="#C4F135"/>
+    <circle cx="500" cy="370" r="2.5" fill="#C4F135"/>
+  </svg>
+  <div style="position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#1ed760,#6EE7A0,#C4F135);"></div>
+  <div style="position:relative; z-index:2; margin-top:80px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="110" height="110" fill="none" style="filter:drop-shadow(0 0 40px rgba(30,215,96,0.5));">
+      <defs><linearGradient id="svMark" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6EE7A0"/><stop offset="1" stop-color="#C4F135"/></linearGradient></defs>
+      <g stroke="url(#svMark)" stroke-width="6" stroke-linecap="round">
+        <line x1="68" y1="46.1" x2="81.5" y2="22.8"/><line x1="49.9" y1="47.6" x2="39" y2="34.2"/>
+        <line x1="75.9" y1="61.3" x2="100" y2="63.3"/><line x1="47.3" y1="69.7" x2="32.4" y2="81.1"/>
+        <line x1="61.4" y1="75.9" x2="63.3" y2="98"/>
+      </g>
+      <circle cx="60" cy="60" r="16" stroke="url(#svMark)" stroke-width="6"/>
+      <circle cx="86" cy="15" r="9" stroke="url(#svMark)" stroke-width="6"/>
+      <circle cx="34" cy="28" r="8" stroke="url(#svMark)" stroke-width="6"/>
+      <circle cx="108" cy="64" r="8" stroke="url(#svMark)" stroke-width="6"/>
+      <circle cx="26" cy="86" r="8" stroke="url(#svMark)" stroke-width="6"/>
+      <circle cx="64" cy="106" r="8" stroke="url(#svMark)" stroke-width="6"/>
+    </svg>
+  </div>
+  <div style="position:relative; z-index:2; font-family:'Space Grotesk',sans-serif; font-size:48px; font-weight:700; letter-spacing:-1.5px; color:#e7ecef; margin-top:24px; text-shadow:0 2px 20px rgba(0,0,0,0.5);">Data Lab</div>
+  <div style="position:relative; z-index:2; width:200px; height:2px; background:linear-gradient(90deg,transparent,#1ed760,#C4F135,transparent); margin:28px auto;"></div>
+  <div style="position:relative; z-index:2; flex:1; display:flex; flex-direction:column; align-items:center; padding:0 40px; text-align:center;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#1ed760; text-transform:uppercase; margin-bottom:16px;">Healthcare Data Modernization</div>
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:700; color:#e7ecef; line-height:1.15; letter-spacing:-0.5px; margin-bottom:20px;">Modern Data.<br>Better Care.</div>
+    <div style="font-family:'IBM Plex Sans',sans-serif; font-size:15px; color:#a9b6bd; line-height:1.7; max-width:380px;">We help healthcare organizations transform messy legacy data into clean, actionable intelligence.</div>
+    <div style="display:flex; gap:12px; margin-top:36px; flex-wrap:wrap; justify-content:center;">
+      <div style="border:1px solid rgba(30,215,96,0.3); border-radius:11px; padding:10px 18px; background:rgba(30,215,96,0.07);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500; color:#1ed760;">94%</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:#5b6a70; margin-top:2px;">Data Accuracy</div>
+      </div>
+      <div style="border:1px solid rgba(196,241,53,0.3); border-radius:11px; padding:10px 18px; background:rgba(196,241,53,0.06);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:500; color:#C4F135;">3×</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:11px; color:#5b6a70; margin-top:2px;">Faster Reporting</div>
+      </div>
+    </div>
+    <div style="margin-top:auto; padding-top:40px; padding-bottom:32px; display:flex; flex-direction:column; align-items:center; gap:4px;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; color:#e7ecef;">Josh Adkins</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:#79878d;">Founder, Data Lab</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#1ed760; margin-top:6px;">midatalab.net</div>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#1ed760,#6EE7A0,#C4F135);"></div>
+</div>
+</x-dc>
+</body>
+</html>

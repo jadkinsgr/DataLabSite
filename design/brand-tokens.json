@@ -1,0 +1,129 @@
+{
+  "brand": "Data Lab",
+  "url": "midatalab.net",
+  "contact": "josh@midatalab.net",
+
+  "colors": {
+    "bg":            "#070c11",
+    "surface":       "#1c2b33",
+    "fg":            "#e7ecef",
+    "fgMuted":       "#cdd6da",
+    "fgSubtle":      "#a9b6bd",
+    "fgFaint":       "#79878d",
+    "fgGhost":       "#5b6a70",
+
+    "primary":       "#1ed760",
+    "primaryLight":  "#6EE7A0",
+    "primaryPale":   "#CFFFE0",
+    "lime":          "#C4F135",
+    "onPrimary":     "#06110f",
+
+    "gradient":      "linear-gradient(135deg, #6EE7A0, #1ed760)",
+    "gradientFull":  "linear-gradient(90deg, #1ed760, #6EE7A0, #C4F135)",
+    "bannerBg":      "linear-gradient(110deg, #0b1e26 0%, #0f3040 38%, #1a4a3a 68%, #2d6a4f 84%, #C4F135 100%)"
+  },
+
+  "typography": {
+    "display": {
+      "family": "'Space Grotesk', system-ui, sans-serif",
+      "googleFont": "Space+Grotesk:wght@400;500;600;700",
+      "weights": [400, 500, 600, 700],
+      "usage": "Headlines, wordmark, nav labels, chips"
+    },
+    "body": {
+      "family": "'IBM Plex Sans', system-ui, sans-serif",
+      "googleFont": "IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400",
+      "weights": [300, 400, 500, 600],
+      "usage": "Body copy, descriptions, UI text"
+    },
+    "mono": {
+      "family": "'JetBrains Mono', monospace",
+      "googleFont": "JetBrains+Mono:wght@400;500",
+      "weights": [400, 500],
+      "usage": "Code, badges, labels, timestamps, contact info"
+    },
+    "googleFontsLink": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+  },
+
+  "scale": {
+    "display":  { "size": "64px", "weight": 700, "letterSpacing": "-1px" },
+    "h1":       { "size": "42px", "weight": 700, "letterSpacing": "-0.5px" },
+    "h2":       { "size": "28px", "weight": 700 },
+    "h3":       { "size": "20px", "weight": 600 },
+    "lead":     { "size": "18px", "weight": 500 },
+    "body":     { "size": "15px", "weight": 400, "lineHeight": "1.6" },
+    "small":    { "size": "13px", "weight": 400 },
+    "label":    { "size": "11px", "weight": 500, "letterSpacing": "0.1em", "textTransform": "uppercase" },
+    "mono":     { "size": "12px", "weight": 400 }
+  },
+
+  "radius": {
+    "sm":   "8px",
+    "md":   "12px",
+    "lg":   "16px",
+    "xl":   "20px",
+    "full": "999px"
+  },
+
+  "components": {
+    "card": {
+      "border":     "1px solid rgba(255,255,255,0.08)",
+      "background": "linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012))",
+      "backdrop":   "blur(12px)",
+      "radius":     "20px",
+      "accentBar":  "linear-gradient(90deg, #1ed760, #C4F135)"
+    },
+    "btnPrimary": {
+      "background": "linear-gradient(135deg, #6EE7A0, #1ed760)",
+      "color":      "#06110f",
+      "radius":     "999px",
+      "fontWeight": 600,
+      "shadow":     "0 8px 30px rgba(30,215,96,0.4)"
+    },
+    "btnSecondary": {
+      "background":  "rgba(255,255,255,0.04)",
+      "border":      "1px solid rgba(255,255,255,0.12)",
+      "color":       "#e7ecef",
+      "radius":      "999px",
+      "backdrop":    "blur(8px)"
+    },
+    "chip": {
+      "border":     "1px solid rgba(255,255,255,0.09)",
+      "background": "rgba(255,255,255,0.025)",
+      "radius":     "11px",
+      "fontSize":   "14px",
+      "fontFamily": "Space Grotesk"
+    },
+    "codeChip": {
+      "border":     "1px solid rgba(255,255,255,0.09)",
+      "background": "rgba(255,255,255,0.025)",
+      "radius":     "9px",
+      "fontSize":   "12.5px",
+      "fontFamily": "JetBrains Mono"
+    }
+  },
+
+  "logo": {
+    "svgFile":  "datalab-logo.svg",
+    "pngFile":  "datalab-logo.png",
+    "viewBox":  "0 0 120 120",
+    "gradient": { "start": "#6EE7A0", "end": "#C4F135" },
+    "strokeWidth": 6
+  },
+
+  "artboards": {
+    "brandOverview":   "Main.dc.html",
+    "colorPalette":    "Colors.dc.html",
+    "typography":      "Typography.dc.html",
+    "emailSignature":  "EmailSignature.dc.html",
+    "slideTitle":      "SlideTitle.dc.html",
+    "slideContent":    "SlideContent.dc.html",
+    "canvasLayout":    "canvas.json"
+  },
+
+  "slide": {
+    "width":  1280,
+    "height": 720,
+    "ratio":  "16:9"
+  }
+}

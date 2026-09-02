@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; font-family: 'IBM Plex Sans', system-ui, sans-serif; background: #070c11; color: #e7ecef; }
+    a { color: #1ed760; } a:hover { color: #6EE7A0; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:900px; background:#070c11; position:relative; overflow:hidden; padding:64px; display:flex; flex-direction:column;">
+
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(50% 50% at 90% 80%, rgba(196,241,53,0.06), transparent 70%);"></div>
+
+  <!-- Header -->
+  <div style="position:relative; z-index:1; margin-bottom:44px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#1ed760; text-transform:uppercase; margin-bottom:10px;">Type System</div>
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:38px; font-weight:700; color:#e7ecef; letter-spacing:-0.5px;">Typography</div>
+  </div>
+
+  <!-- Three columns -->
+  <div style="position:relative; z-index:1; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:32px; flex:1;">
+
+    <!-- Col 1: Space Grotesk -->
+    <div style="border:1px solid rgba(255,255,255,0.07); border-radius:16px; background:rgba(255,255,255,0.025); padding:28px; display:flex; flex-direction:column; gap:20px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#1ed760; text-transform:uppercase; margin-bottom:6px;">Display · Heading</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:500; color:#79878d;">Space Grotesk</div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; color:#e7ecef; letter-spacing:-1px; line-height:1.1;">Aa</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">700 · Display</div>
+        </div>
+
+        <div style="height:1px; background:rgba(255,255,255,0.05);"></div>
+
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:#e7ecef; letter-spacing:-0.5px; line-height:1.2;">Healthcare Data,<br>Modernized.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:6px;">28px / 700 · H1</div>
+        </div>
+
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; color:#e7ecef; line-height:1.3;">Better data. Healthier patients.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">20px / 600 · H2</div>
+        </div>
+
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500; color:#cdd6da; line-height:1.4;">Azure · Databricks · Epic</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">15px / 500 · H3</div>
+        </div>
+
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:500; color:#a9b6bd; line-height:1.4; letter-spacing:0.02em;">Client chip · Navigation · Labels</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">13px / 500 · UI Label</div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:12.5px; color:#a9b6bd; line-height:1.6; letter-spacing:0.01em;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        0123456789 &amp; @ ! ? · —
+      </div>
+    </div>
+
+    <!-- Col 2: IBM Plex Sans -->
+    <div style="border:1px solid rgba(255,255,255,0.07); border-radius:16px; background:rgba(255,255,255,0.025); padding:28px; display:flex; flex-direction:column; gap:20px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#6EE7A0; text-transform:uppercase; margin-bottom:6px;">Body · Interface</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:500; color:#79878d;">IBM Plex Sans</div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <div style="font-family:'IBM Plex Sans',sans-serif; font-size:42px; font-weight:600; color:#e7ecef; line-height:1.1;">Aa</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">600 · Lead</div>
+        </div>
+
+        <div style="height:1px; background:rgba(255,255,255,0.05);"></div>
+
+        <div>
+          <div style="font-family:'IBM Plex Sans',sans-serif; font-size:18px; font-weight:500; color:#e7ecef; line-height:1.4;">We modernize healthcare data infrastructure and hand you the keys.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:6px;">18px / 500 · Lead</div>
+        </div>
+
+        <div>
+          <div style="font-family:'IBM Plex Sans',sans-serif; font-size:15px; font-weight:400; color:#cdd6da; line-height:1.6;">From raw claims and EHR extracts to curated Delta tables and governed data products — we own the hard part.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:6px;">15px / 400 · Body</div>
+        </div>
+
+        <div>
+          <div style="font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:300; color:#a9b6bd; line-height:1.6; font-style:italic;">Better data. Healthier patients. Stronger care.</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">13px / 300 italic · Caption</div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; color:#a9b6bd; line-height:1.6; font-weight:400;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        0123456789 &amp; @ ! ? · —
+      </div>
+    </div>
+
+    <!-- Col 3: JetBrains Mono -->
+    <div style="border:1px solid rgba(255,255,255,0.07); border-radius:16px; background:rgba(255,255,255,0.025); padding:28px; display:flex; flex-direction:column; gap:20px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#C4F135; text-transform:uppercase; margin-bottom:6px;">Monospace · Code</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:500; color:#79878d;">JetBrains Mono</div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:42px; font-weight:400; color:#e7ecef; line-height:1.1;">Aa</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:4px;">400 · Mono</div>
+        </div>
+
+        <div style="height:1px; background:rgba(255,255,255,0.05);"></div>
+
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500; color:#6EE7A0; letter-spacing:0.06em; text-transform:uppercase;">LIVE · AZURE · DATABRICKS</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:6px;">13px / 500 · Badge</div>
+        </div>
+
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:400; color:#cdd6da; line-height:1.7;">midwestdataworks.com<br>hello@midatalab.net<br>Grand Rapids, MI</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:6px;">12px / 400 · Contact</div>
+        </div>
+
+        <div style="border-radius:10px; background:rgba(30,215,96,0.06); border:1px solid rgba(30,215,96,0.2); padding:12px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6EE7A0; line-height:1.8;">
+            <span style="color:#5b6a70;">SELECT</span> patient_id,<br>
+            &nbsp;&nbsp;readmission_flag<br>
+            <span style="color:#5b6a70;">FROM</span> gold.encounters<br>
+            <span style="color:#5b6a70;">WHERE</span> los_days &gt; 3
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; margin-top:8px;">11px / 400 · Code block</div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.07);"></div>
+
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#a9b6bd; line-height:1.7;">
+        0123456789 · ABCDE<br>
+        abcdefg @ # % &lt;&gt; {}
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

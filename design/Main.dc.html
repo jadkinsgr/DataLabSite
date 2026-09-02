@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; font-family: 'IBM Plex Sans', system-ui, sans-serif; background: #070c11; color: #e7ecef; }
+    a { color: #1ed760; } a:hover { color: #6EE7A0; }
+    @keyframes pulse { 0%,100% { opacity:0.6; } 50% { opacity:1; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:900px; background:#070c11; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+
+  <!-- Background radial glows -->
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(60% 60% at 80% 10%, rgba(30,215,96,0.13), transparent 70%), radial-gradient(50% 50% at 10% 70%, rgba(196,241,53,0.07), transparent 70%);"></div>
+
+  <!-- Grid dot pattern -->
+  <div style="position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px); background-size:32px 32px; mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);"></div>
+
+  <!-- Center content -->
+  <div style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:0; animation:fadeUp 0.7s ease both;">
+
+    <!-- Logo mark -->
+    <div style="width:100px; height:100px; margin-bottom:28px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100" height="100" fill="none">
+        <defs>
+          <linearGradient id="lgMark" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#6EE7A0"/>
+            <stop offset="1" stop-color="#C4F135"/>
+          </linearGradient>
+        </defs>
+        <g stroke="url(#lgMark)" stroke-width="6" stroke-linecap="round">
+          <line x1="68" y1="46.1" x2="81.5" y2="22.8"/>
+          <line x1="49.9" y1="47.6" x2="39" y2="34.2"/>
+          <line x1="75.9" y1="61.3" x2="100" y2="63.3"/>
+          <line x1="47.3" y1="69.7" x2="32.4" y2="81.1"/>
+          <line x1="61.4" y1="75.9" x2="63.3" y2="98"/>
+        </g>
+        <circle cx="60" cy="60" r="16" stroke="url(#lgMark)" stroke-width="6"/>
+        <circle cx="86" cy="15" r="9" stroke="url(#lgMark)" stroke-width="6"/>
+        <circle cx="34" cy="28" r="8" stroke="url(#lgMark)" stroke-width="6"/>
+        <circle cx="108" cy="64" r="8" stroke="url(#lgMark)" stroke-width="6"/>
+        <circle cx="26" cy="86" r="8" stroke="url(#lgMark)" stroke-width="6"/>
+        <circle cx="64" cy="106" r="8" stroke="url(#lgMark)" stroke-width="6"/>
+      </svg>
+    </div>
+
+    <!-- Wordmark -->
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:64px; font-weight:700; letter-spacing:-1px; color:#e7ecef; line-height:1; margin-bottom:8px;">Data Lab</div>
+
+    <!-- Gradient rule -->
+    <div style="width:240px; height:2px; background:linear-gradient(90deg, #1ed760, #C4F135); border-radius:2px; margin:20px 0;"></div>
+
+    <!-- Tagline -->
+    <div style="font-family:'IBM Plex Sans',sans-serif; font-size:18px; font-weight:400; color:#a9b6bd; letter-spacing:0.04em; text-align:center; line-height:1.5; max-width:480px;">Healthcare Data Modernization<br>on Azure + Databricks</div>
+
+    <!-- Descriptor chips -->
+    <div style="display:flex; gap:10px; margin-top:36px; flex-wrap:wrap; justify-content:center;">
+      <div style="padding:7px 16px; border-radius:999px; border:1px solid rgba(30,215,96,0.35); background:rgba(30,215,96,0.06); font-family:'JetBrains Mono',monospace; font-size:12px; color:#6EE7A0; letter-spacing:0.06em;">BRAND GUIDE</div>
+      <div style="padding:7px 16px; border-radius:999px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03); font-family:'JetBrains Mono',monospace; font-size:12px; color:#79878d; letter-spacing:0.06em;">v1.0 · 2026</div>
+    </div>
+  </div>
+
+  <!-- Bottom section -->
+  <div style="position:absolute; bottom:0; left:0; right:0; padding:28px 56px; display:flex; justify-content:space-between; align-items:flex-end; z-index:2;">
+    <!-- Color strip -->
+    <div style="display:flex; gap:6px; align-items:center;">
+      <div style="width:24px; height:24px; border-radius:6px; background:#070c11; border:1px solid rgba(255,255,255,0.15);"></div>
+      <div style="width:24px; height:24px; border-radius:6px; background:#1c2b33;"></div>
+      <div style="width:24px; height:24px; border-radius:6px; background:#1ed760;"></div>
+      <div style="width:24px; height:24px; border-radius:6px; background:#C4F135;"></div>
+      <div style="width:24px; height:24px; border-radius:6px; background:#6EE7A0;"></div>
+      <div style="width:24px; height:24px; border-radius:6px; background:#e7ecef;"></div>
+    </div>
+    <!-- Domain -->
+    <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#5b6a70; letter-spacing:0.04em;">midatalab.net</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

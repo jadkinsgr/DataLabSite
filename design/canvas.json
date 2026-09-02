@@ -1,0 +1,23 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",          "x": 0,    "y": 0,    "w": 1440, "h": 900, "title": "Brand Overview",     "page": "brand" },
+    { "file": "Colors.dc.html",        "x": 1520, "y": 0,    "w": 1440, "h": 900, "title": "Color Palette",      "page": "brand" },
+    { "file": "Typography.dc.html",    "x": 3040, "y": 0,    "w": 1440, "h": 900, "title": "Typography",         "page": "brand" },
+    { "file": "EmailSignature.dc.html","x": 0,    "y": 980,  "w": 900,  "h": 640, "title": "Email Signature",    "page": "brand" },
+    { "file": "SlideTitle.dc.html",    "x": 0,    "y": 0,    "w": 1280, "h": 720, "title": "Title Slide",        "page": "slides" },
+    { "file": "SlideContent.dc.html",  "x": 1360, "y": 0,    "w": 1280, "h": 720, "title": "Content Slide",      "page": "slides" },
+    { "file": "YoutubeIntro.dc.html",  "x": 0,    "y": 0,    "w": 1280, "h": 720, "title": "YouTube Intro",      "page": "social" },
+    { "file": "SocialVertical.dc.html","x": 1360, "y": 0,    "w": 540,  "h": 960, "title": "Social Vertical 9:16","page": "social" }
+  ],
+  "pages": [
+    { "id": "brand",  "name": "Brand Guide" },
+    { "id": "slides", "name": "Slide Templates" },
+    { "id": "social", "name": "Social / Motion" }
+  ],
+  "annotations": [
+    { "id": "brand-note",  "x": 0, "y": -90, "w": 480, "text": "Brand Guide — colors, type, and the email signature. Edit any value directly on the canvas.", "page": "brand" },
+    { "id": "slides-note", "x": 0, "y": -90, "w": 480, "text": "Slide Templates — 16:9, dark brand style. Duplicate and fill in your content.", "page": "slides" },
+    { "id": "social-note", "x": 0, "y": -90, "w": 560, "text": "Social / Motion — YouTube intro (16:9) and vertical social card (9:16) for Instagram, TikTok, and Shorts.", "page": "social" }
+  ],
+  "launch": { "view": "canvas", "page": "brand" }
+}

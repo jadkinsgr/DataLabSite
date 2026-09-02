@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; font-family: 'IBM Plex Sans', system-ui, sans-serif; background: #070c11; color: #e7ecef; }
+    a { color: #1ed760; } a:hover { color: #6EE7A0; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:900px; background:#070c11; position:relative; overflow:hidden; padding:64px;">
+
+  <!-- Subtle glow -->
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(55% 55% at 85% 15%, rgba(30,215,96,0.08), transparent 70%);"></div>
+
+  <!-- Page header -->
+  <div style="position:relative; z-index:1; margin-bottom:52px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#1ed760; text-transform:uppercase; margin-bottom:10px;">Color System</div>
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:38px; font-weight:700; color:#e7ecef; letter-spacing:-0.5px; line-height:1;">Palette</div>
+  </div>
+
+  <!-- Color groups -->
+  <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:40px;">
+
+    <!-- Group 1: Core -->
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#5b6a70; text-transform:uppercase; margin-bottom:16px;">Core</div>
+      <div style="display:flex; gap:16px;">
+
+        <!-- Void -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#070c11; border:1px solid rgba(255,255,255,0.12);"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Void</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#070c11</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Page background</div>
+          </div>
+        </div>
+
+        <!-- Surface -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#1c2b33;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Surface</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#1c2b33</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Cards, scrollbars</div>
+          </div>
+        </div>
+
+        <!-- Fog -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#e7ecef;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Frost</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#e7ecef</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Body text</div>
+          </div>
+        </div>
+
+        <!-- Mist -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#a9b6bd;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Mist</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#a9b6bd</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Nav links</div>
+          </div>
+        </div>
+
+        <!-- Smoke -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#79878d;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Smoke</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#79878d</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Labels, captions</div>
+          </div>
+        </div>
+
+        <!-- Ash -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:168px;">
+          <div style="height:96px; border-radius:14px; background:#5b6a70;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Ash</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#5b6a70</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Timestamps, meta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 2: Brand -->
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#5b6a70; text-transform:uppercase; margin-bottom:16px;">Brand</div>
+      <div style="display:flex; gap:16px;">
+
+        <!-- Primary -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:200px;">
+          <div style="height:96px; border-radius:14px; background:#1ed760; position:relative; overflow:hidden;">
+            <div style="position:absolute; top:10px; right:12px; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.1em; color:rgba(6,17,15,0.6); text-transform:uppercase;">Primary</div>
+          </div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Signal Green</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#1ed760</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">CTAs, highlights, hovers</div>
+          </div>
+        </div>
+
+        <!-- Lime -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:200px;">
+          <div style="height:96px; border-radius:14px; background:#C4F135; position:relative; overflow:hidden;">
+            <div style="position:absolute; top:10px; right:12px; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.1em; color:rgba(6,17,15,0.6); text-transform:uppercase;">Accent</div>
+          </div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Lime Surge</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#C4F135</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Gradients, energy accents</div>
+          </div>
+        </div>
+
+        <!-- Primary Light -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:200px;">
+          <div style="height:96px; border-radius:14px; background:#6EE7A0;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Mint</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#6EE7A0</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Logo gradient start, status</div>
+          </div>
+        </div>
+
+        <!-- Primary Pale -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:200px;">
+          <div style="height:96px; border-radius:14px; background:#CFFFE0;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Dew</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#CFFFE0</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Icons on dark, soft glows</div>
+          </div>
+        </div>
+
+        <!-- On-primary -->
+        <div style="display:flex; flex-direction:column; gap:12px; width:200px;">
+          <div style="height:96px; border-radius:14px; background:#06110f;"></div>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:#e7ecef; margin-bottom:2px;">Deep Forest</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b6a70;">#06110f</div>
+            <div style="font-size:11px; color:#79878d; margin-top:4px;">Text on primary bg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gradient strip -->
+    <div style="display:flex; gap:16px; align-items:center;">
+      <div style="flex:1; height:12px; border-radius:6px; background:linear-gradient(90deg, #1ed760, #6EE7A0, #C4F135);"></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5b6a70; white-space:nowrap;">Brand gradient · #1ed760 → #6EE7A0 → #C4F135</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
