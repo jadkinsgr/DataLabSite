@@ -243,6 +243,15 @@
     </div>
   </header>
 
+  <section data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) 70px;">
+    <div style="border: 1px solid rgba(var(--primary-rgb),0.22); border-radius: 22px; background: linear-gradient(135deg, rgba(var(--primary-rgb),0.08), rgba(var(--lime-rgb),0.04)); padding: 40px clamp(24px, 5vw, 56px); text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--primary-light); margin-bottom: 14px;">// THE OWNERSHIP PRINCIPLE</div>
+      <p style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(19px, 2.4vw, 26px); line-height: 1.5; color: #eef2f3; max-width: 780px; margin: 0 auto; letter-spacing: -0.01em;">
+        Every platform we build runs on the client's Azure environment, the client's Databricks workspace, and the client's infrastructure. If anything ever happened to Data Lab, every client platform keeps running without interruption.
+      </p>
+    </div>
+  </section>
+
   <section id="approach" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 30px clamp(20px, 5vw, 64px) 70px;">
     <div style="border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)); backdrop-filter: blur(12px); padding: 30px clamp(20px, 4vw, 46px) 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.35);">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 6px;">// HOW DATA MOVES THROUGH THE PLATFORM</div>
@@ -286,31 +295,48 @@
 
   <section id="services" data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 30px clamp(20px, 5vw, 64px) 70px;">
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 10px;">// WHAT WE DO</div>
-    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 40px;">Services built for healthcare data.</h2>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 38px); color: #f4f7f8; letter-spacing: -0.02em; margin: 0 0 14px;">Services built for healthcare data.</h2>
+    <p style="font-size: 15.5px; line-height: 1.6; color: #a3b0b6; max-width: 620px; margin: 0 0 32px;">Every service below runs however your team needs it - as <strong style="color: #cdd6da; font-weight: 600;">advisory</strong> guidance on your existing team, or as <strong style="color: #cdd6da; font-weight: 600;">hands-on working sessions</strong> where we build alongside you.</p>
     <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
       <div class="service-card">
         <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6-1.7A4 4 0 0 0 6.5 16"/><path d="M12 12v7m0 0-2.5-2.5M12 19l2.5-2.5"/></svg></div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--primary-light); margin-bottom: 10px;">CLOUD MIGRATION</div>
         <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #eef2f3; margin: 0 0 12px;">Cloud Migration &amp; Modernization</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0;">Moving healthcare organizations from on-premise systems to Azure and Databricks - built to be owned and operated by the client, not by us.</p>
+        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0 0 16px;">Moving healthcare organizations from on-premise systems to Azure and Databricks - built to be owned and operated by the client, not by us.</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="stack-chip">Advisory</span>
+          <span class="stack-chip">Working sessions</span>
+        </div>
       </div>
       <div class="service-card">
         <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m6.5 10V4M17 20v-7"/><path d="M3 20h18"/></svg></div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--primary-light); margin-bottom: 10px;">QUALITY ANALYTICS</div>
         <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #eef2f3; margin: 0 0 12px;">Clinical Quality Analytics</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0;">Dashboards and measurement logic for HEDIS scores, CMS Star Ratings, and LeapFrog performance - built directly on validated Gold-layer data.</p>
+        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0 0 16px;">Dashboards and measurement logic for HEDIS scores, CMS Star Ratings, and LeapFrog performance - built directly on validated Gold-layer data.</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="stack-chip">Advisory</span>
+          <span class="stack-chip">Working sessions</span>
+        </div>
       </div>
       <div class="service-card">
         <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5V12c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8V5.5"/><path d="M4.5 12v6.5c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8V12"/></svg></div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--primary-light); margin-bottom: 10px;">UNIFIED DATA</div>
         <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #eef2f3; margin: 0 0 12px;">Unified Patient Data Layer</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0;">Consolidating disparate sources - EHR, claims, lab, ADT, pharmacy - into a single validated layer on Databricks Unity Catalog.</p>
+        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0 0 16px;">Consolidating disparate sources - EHR, claims, lab, ADT, pharmacy - into a single validated layer on Databricks Unity Catalog.</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="stack-chip">Advisory</span>
+          <span class="stack-chip">Working sessions</span>
+        </div>
       </div>
       <div class="service-card">
         <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10m0 0-3.5-3.5M12 13l3.5-3.5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--primary-light); margin-bottom: 10px;">INGESTION</div>
         <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #eef2f3; margin: 0 0 12px;">Flexible Data Ingestion</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0;">Pipelines supporting real-time and batch data movement from APIs, flat files, FHIR endpoints, and databases.</p>
+        <p style="font-size: 14.5px; line-height: 1.65; color: #a3b0b6; margin: 0 0 16px;">Pipelines supporting real-time and batch data movement from APIs, flat files, FHIR endpoints, and databases.</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="stack-chip">Advisory</span>
+          <span class="stack-chip">Working sessions</span>
+        </div>
       </div>
     </div>
   </section>
@@ -446,15 +472,6 @@
           <span>synced 4m ago</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section data-reveal style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 10px clamp(20px, 5vw, 64px) 70px;">
-    <div style="border: 1px solid rgba(var(--primary-rgb),0.22); border-radius: 22px; background: linear-gradient(135deg, rgba(var(--primary-rgb),0.08), rgba(var(--lime-rgb),0.04)); padding: 40px clamp(24px, 5vw, 56px); text-align: center;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--primary-light); margin-bottom: 14px;">// THE OWNERSHIP PRINCIPLE</div>
-      <p style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(19px, 2.4vw, 26px); line-height: 1.5; color: #eef2f3; max-width: 780px; margin: 0 auto; letter-spacing: -0.01em;">
-        Every platform we build runs on the client's Azure environment, the client's Databricks workspace, and the client's infrastructure. If anything ever happened to Data Lab, every client platform keeps running without interruption.
-      </p>
     </div>
   </section>
 
