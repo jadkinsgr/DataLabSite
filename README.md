@@ -11,6 +11,13 @@ This is being iterated on via GitHub Pages, now pointed at the `midatalab.net` p
 
 1. Downgrade/cancel the Wix Premium plan once the cutover is confirmed working.
 
+## Contents
+
+- `index.html` - the entire site (inline CSS/JS, inline SVG favicon)
+- `CNAME` - custom domain for GitHub Pages (`midatalab.net`)
+
+Brand assets (logos, intro/outro videos, music) and design files (brand tokens, slide/social/email templates) are not needed by the site and live in the `assets/` and `design/` folders of the `TheDataLab` repo.
+
 ## Local preview
 
 Just open `index.html` in a browser - no build tooling required.
