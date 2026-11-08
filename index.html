@@ -53,6 +53,25 @@
   ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
   @keyframes flow { 0%{ background-position: 0% 0; } 100%{ background-position: -200% 0; } }
   @keyframes nodeGlow { 0%,100%{ transform: scale(1); box-shadow: 0 0 16px 2px rgba(var(--primary-rgb),0.35); } 50%{ transform: scale(1.12); box-shadow: 0 0 28px 6px rgba(var(--primary-rgb),0.6); } }
+  @keyframes nodeWave { 0%,22%,100%{ transform: scale(1); box-shadow: 0 0 12px 1px rgba(var(--primary-rgb),0.25); } 5%{ transform: scale(1.12); box-shadow: 0 0 28px 6px rgba(var(--primary-rgb),0.65); } }
+  @keyframes packet { 0%{ left: 0; opacity: 0; } 3%{ opacity: 1; } 14%{ left: calc(100% - 8px); opacity: 1; } 18%,100%{ left: calc(100% - 8px); opacity: 0; } }
+  .pipe-row { display: flex; align-items: flex-start; justify-content: center; gap: 0; flex-wrap: nowrap; }
+  .pipe-step { flex: 0 1 150px; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+  .pipe-node { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeWave 4s ease-in-out infinite; flex: none; }
+  .pipe-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0; }
+  .pipe-desc { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4; }
+  .pipe-link { flex: 1 1 24px; min-width: 14px; max-width: 70px; height: 2px; margin-top: 26px; position: relative; background: rgba(var(--primary-rgb),0.18); border-radius: 2px; }
+  .pipe-packet { position: absolute; top: -3px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px 3px rgba(var(--primary-rgb),0.7), -14px 0 12px -2px rgba(var(--primary-rgb),0.5); opacity: 0; animation: packet 4s ease-in-out infinite; }
+  .pipe-arrow { position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 2px solid rgba(var(--primary-rgb),0.7); border-right: 2px solid rgba(var(--primary-rgb),0.7); transform: rotate(45deg); }
+  @media (max-width: 560px) {
+    .pipe-step { flex: 0 0 auto; width: 44px; gap: 8px; overflow: visible; }
+    .pipe-node { width: 40px; height: 40px; border-radius: 12px; font-size: 15px; }
+    .pipe-title { font-size: 11.5px; }
+    .pipe-desc { display: none; }
+    .pipe-link { margin-top: 19px; min-width: 8px; }
+    .pipe-packet { width: 6px; height: 6px; top: -2px; }
+    .pipe-arrow { width: 6px; height: 6px; top: -3px; }
+  }
   @keyframes shimmer { to { background-position: 200% center; } }
 
   a.nav-link { color: #a9b6bd; text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 8px; transition: color .2s, background .2s; }
@@ -239,39 +258,16 @@
     <div style="border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)); backdrop-filter: blur(12px); padding: 30px clamp(20px, 4vw, 46px) 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.35);">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #85959c; margin-bottom: 6px;">// HOW DATA MOVES THROUGH THE PLATFORM</div>
       <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(20px, 2.4vw, 27px); color: #eef2f3; margin-bottom: 30px; letter-spacing: -0.01em;">From fragmented sources to decision-ready insight.</div>
-      <div id="pipeline-row" style="display: flex; align-items: flex-start; justify-content: center; gap: 8px; flex-wrap: wrap; row-gap: 34px;">
-        <div style="flex: 0 1 140px; min-width: 128px; max-width: 170px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative;">
-          <div style="width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeGlow 3.4s ease-in-out infinite; animation-delay: 0s;">1</div>
-          <div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0;">Sources</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4;">EHR · Claims · Labs · ADT · Pharmacy</div></div>
-        </div>
-        <div style="flex: 0 0 28px; align-self: flex-start; margin-top: 26px; height: 3px; border-radius: 3px; position: relative; overflow: visible; background-image: linear-gradient(90deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-rgb),0.15));">
-          <div style="position: absolute; inset: 0; border-radius: 3px; background-image: linear-gradient(90deg, transparent, var(--primary), var(--lime), transparent); background-size: 200% 100%; animation: flow 1.6s linear infinite;"></div>
-        </div>
-        <div style="flex: 0 1 140px; min-width: 128px; max-width: 170px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative;">
-          <div style="width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeGlow 3.4s ease-in-out infinite; animation-delay: 0.4s;">2</div>
-          <div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0;">Bronze</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4;">Raw ingest · ADLS Gen2</div></div>
-        </div>
-        <div style="flex: 0 0 28px; align-self: flex-start; margin-top: 26px; height: 3px; border-radius: 3px; position: relative; overflow: visible; background-image: linear-gradient(90deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-rgb),0.15));">
-          <div style="position: absolute; inset: 0; border-radius: 3px; background-image: linear-gradient(90deg, transparent, var(--primary), var(--lime), transparent); background-size: 200% 100%; animation: flow 1.6s linear infinite;"></div>
-        </div>
-        <div style="flex: 0 1 140px; min-width: 128px; max-width: 170px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative;">
-          <div style="width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeGlow 3.4s ease-in-out infinite; animation-delay: 0.8s;">3</div>
-          <div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0;">Silver</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4;">Normalize · validate · Unity Catalog</div></div>
-        </div>
-        <div style="flex: 0 0 28px; align-self: flex-start; margin-top: 26px; height: 3px; border-radius: 3px; position: relative; overflow: visible; background-image: linear-gradient(90deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-rgb),0.15));">
-          <div style="position: absolute; inset: 0; border-radius: 3px; background-image: linear-gradient(90deg, transparent, var(--primary), var(--lime), transparent); background-size: 200% 100%; animation: flow 1.6s linear infinite;"></div>
-        </div>
-        <div style="flex: 0 1 140px; min-width: 128px; max-width: 170px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative;">
-          <div style="width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeGlow 3.4s ease-in-out infinite; animation-delay: 1.2s;">4</div>
-          <div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0;">Gold</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4;">HEDIS · Star Ratings · measures</div></div>
-        </div>
-        <div style="flex: 0 0 28px; align-self: flex-start; margin-top: 26px; height: 3px; border-radius: 3px; position: relative; overflow: visible; background-image: linear-gradient(90deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-rgb),0.15));">
-          <div style="position: absolute; inset: 0; border-radius: 3px; background-image: linear-gradient(90deg, transparent, var(--primary), var(--lime), transparent); background-size: 200% 100%; animation: flow 1.6s linear infinite;"></div>
-        </div>
-        <div style="flex: 0 1 140px; min-width: 128px; max-width: 170px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative;">
-          <div style="width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--primary-pale); background: radial-gradient(circle at 30% 25%, rgba(var(--primary-rgb),0.28), rgba(var(--primary-rgb),0.06)); border: 1px solid rgba(var(--primary-rgb),0.35); animation: nodeGlow 3.4s ease-in-out infinite; animation-delay: 1.6s;">5</div>
-          <div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14.5px; color: #eaeef0;">Insight</div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #79878d; margin-top: 4px; line-height: 1.4;">Tableau · Power BI · Databricks SQL</div></div>
-        </div>
+      <div id="pipeline-row" class="pipe-row">
+        <div class="pipe-step"><div class="pipe-node" style="animation-delay: 0.0s;">1</div><div class="pipe-label"><div class="pipe-title">Sources</div><div class="pipe-desc">EHR · Claims · Labs · ADT · Pharmacy</div></div></div>
+        <div class="pipe-link" aria-hidden="true"><span class="pipe-packet" style="animation-delay: 0.15s;"></span><span class="pipe-arrow"></span></div>
+        <div class="pipe-step"><div class="pipe-node" style="animation-delay: 0.8s;">2</div><div class="pipe-label"><div class="pipe-title">Bronze</div><div class="pipe-desc">Raw ingest · ADLS Gen2</div></div></div>
+        <div class="pipe-link" aria-hidden="true"><span class="pipe-packet" style="animation-delay: 0.95s;"></span><span class="pipe-arrow"></span></div>
+        <div class="pipe-step"><div class="pipe-node" style="animation-delay: 1.6s;">3</div><div class="pipe-label"><div class="pipe-title">Silver</div><div class="pipe-desc">Normalize · validate · Unity Catalog</div></div></div>
+        <div class="pipe-link" aria-hidden="true"><span class="pipe-packet" style="animation-delay: 1.75s;"></span><span class="pipe-arrow"></span></div>
+        <div class="pipe-step"><div class="pipe-node" style="animation-delay: 2.4s;">4</div><div class="pipe-label"><div class="pipe-title">Gold</div><div class="pipe-desc">HEDIS · Star Ratings · measures</div></div></div>
+        <div class="pipe-link" aria-hidden="true"><span class="pipe-packet" style="animation-delay: 2.55s;"></span><span class="pipe-arrow"></span></div>
+        <div class="pipe-step"><div class="pipe-node" style="animation-delay: 3.2s;">5</div><div class="pipe-label"><div class="pipe-title">Insight</div><div class="pipe-desc">Tableau · Power BI · Databricks SQL</div></div></div>
       </div>
     </div>
   </section>
@@ -583,7 +579,7 @@
         });
       });
     });
-    const pipelineItems = gsap.utils.toArray('#pipeline-row > div');
+    const pipelineItems = gsap.utils.toArray('#pipeline-row > .pipe-step');
     if (pipelineItems.length) {
       gsap.set(pipelineItems, { opacity: 0, y: 18 });
       gsap.to(pipelineItems, {
